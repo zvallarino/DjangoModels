@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>HomePage</h1>
+    <p>Total Books: {{num_painting}}</p>
+    <p>Num Available: {{num_instance_avail}}</p>
+    {% if user.is_authenticated %}
+    <p>You are logged In</p>
+    <p>Welcome:{{user.get_username}}</p>
+    <a href="{% url 'logout' %}?next={{request.path}}">Log out</a>
+    {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}?next={{request.path}}">Login in</a>
+    {% endif %}
+</body>
+</html>
